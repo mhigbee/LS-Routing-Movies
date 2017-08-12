@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getSelectedMovie } from '../actions';
-import ListStars from './ListStars'
-import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
 
 class MoviesInfo extends Component {
   componentDidMount() {
     this.props.getSelectedMovie(this.props.match.params.id);
   }
-  
 
   render() {
-    return (
-      <div>
-        <h1>Title: {this.props.movie.title}</h1>
-        <h2>Director: {this.props.movie.director}</h2>
-        <h3>Metascore: {this.props.movie.metascore}</h3>
-        <ListStars stars={this.props.movie.stars}/>
-      </div>
-    )
+    if(this.props.movie.stars === undefined) return null;
+      return (
+        <div>
+          <h1>Title: {this.props.movie.title}</h1>
+          <h2>Director: {this.props.movie.director}</h2>
+          <h3>Metascore: {this.props.movie.metascore}</h3>
+          <ul> Stars
+            {this.props.movie.stars.map((star, i) =>{
+              return (
+                <li key={i}>{star}</li>
+              )
+            })}
+          </ul>
+        </div>
+      )
   }
-
-  
 }
 
 const mapStateToProps = (state) => {
