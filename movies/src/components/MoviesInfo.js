@@ -7,22 +7,26 @@ class MoviesInfo extends Component {
     this.props.getSelectedMovie(this.props.match.params.id);
   }
 
-  render() {
-    if(this.props.movie.stars === undefined) return null;
-      return (
-        <div>
-          <h1>Title: {this.props.movie.title}</h1>
-          <h2>Director: {this.props.movie.director}</h2>
-          <h3>Metascore: {this.props.movie.metascore}</h3>
-          <ul> Stars
-            {this.props.movie.stars.map((star, i) =>{
-              return (
-                <li key={i}>{star}</li>
-              )
-            })}
-          </ul>
-        </div>
+  displayStars() {
+    if (this.props.movie.stars === undefined) return null;
+    return(
+      this.props.movie.stars.map((star) =>
+        <li>{star}</li>
       )
+    )
+  }
+  
+  render() {
+    return (
+      <div>
+        <h1>Title: {this.props.movie.title}</h1>
+        <h2>Director: {this.props.movie.director}</h2>
+        <h3>Metascore: {this.props.movie.metascore}</h3>
+        <ul> Stars:
+          {this.displayStars()}
+        </ul>
+      </div>
+    )
   }
 }
 
