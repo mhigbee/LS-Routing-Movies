@@ -12,7 +12,7 @@ export const getMovies = () => {
 };
 
 export const getSelectedMovie = (id) => {
-  const promise = axios.get('http://localhost:5000/moves/:id', {
+  const promise = axios.get(`http://localhost:5000/movies/${id}`, {
     params: {
       id
     }

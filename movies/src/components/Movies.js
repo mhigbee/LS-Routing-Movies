@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMovies } from '../actions';
+import { Link, Route, BrowserRouter as Router } from 'react-router-dom';
 
 class Movies extends Component {
   componentDidMount() {
@@ -14,7 +15,9 @@ class Movies extends Component {
           {this.props.movies.map((movie, i) => {
             return (
               <li key={i}>
-                <h3>{movie.title}</h3>
+                <Link to={`/movies/${movie.id}`}>
+                  {movie.title}
+                </Link>
               </li>
               )
             }
@@ -34,8 +37,3 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, { getMovies })(Movies);
 
 
-// id: 0,
-// title: 'The Godfather',
-// director: 'Francis Ford Coppola',
-// metascore: 100,
-// stars: ['Marlon Brando', 'Al Pacino', 'Robert Duvall'],

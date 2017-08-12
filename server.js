@@ -37,6 +37,7 @@ app.get('/movies', (req, res) => {
 
 app.get('/movies/:id', (req, res) => {
 	const movie = movies.filter(movie => movie.id.toString() === req.params.id)[0];
+	console.log(movie);
 	res.send(movie);
 });
 

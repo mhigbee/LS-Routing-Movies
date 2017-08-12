@@ -9,11 +9,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path="/movies" component={Movies}/>
-        {/* <Route path="/movies/:id" component={MoviesInfo}/> */}
+        <Route exact path="/movies" component={Movies}/>
+        <Route path="/movies/:id" component={MoviesInfo}/>
       </div>
     );
   }
 }
 
 export default App;
+
